@@ -14,11 +14,10 @@ class CrearTablaPermisoRol extends Migration
     public function up()
     {
         Schema::create('permiso_rol', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('permiso_id');
-            $table->foreignId('rol_id');
-            $table->foreign('permiso_id', 'fk_permiso_rol')->references('id')->on('permiso')->onDelete('restrict')->onUpdate('restrict');
-            $table->foreign('rol_id', 'fk_rol_permiso')->references('id')->on('rol')->onDelete('restrict')->onUpdate('restrict');
+            $table->foreignId('id_permiso');
+            $table->foreignId('id_rol');
+            $table->foreign('id_permiso', 'fk_permiso_rol')->references('id')->on('permiso')->onDelete('restrict')->onUpdate('restrict');
+            $table->foreign('id_rol', 'fk_rol_permiso')->references('id')->on('rol')->onDelete('restrict')->onUpdate('restrict');
             $table->timestamps();
         });
     }
