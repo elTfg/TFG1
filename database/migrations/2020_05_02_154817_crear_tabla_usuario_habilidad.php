@@ -19,6 +19,7 @@ class CrearTablaUsuarioHabilidad extends Migration
             $table->foreign('id_usuario')->references('id')->on('usuario')->onDelete('restrict')->onUpdate('restrict');
             $table->foreign('id_habilidad')->references('id')->on('habilidad')->onDelete('restrict')->onUpdate('restrict');
             $table->timestamps();
+
         });
     }
 
