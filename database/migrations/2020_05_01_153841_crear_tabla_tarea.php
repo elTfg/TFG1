@@ -17,6 +17,8 @@ class CrearTablaTarea extends Migration
             $table->id();
             $table->string('nombre_tarea', 50)->nullable($value= false);
             $table->text('descripcion_tarea');
+            $table->date('fecha_inicio_prevista');
+            $table->date('fecha_fin_prevista');
             $table->unsignedSmallInteger('n_horas_asignadas');
             $table->timestamp('creada_el');
             $table->timestamp('finalizada_el');

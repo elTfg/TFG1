@@ -13,7 +13,7 @@ class CrearTablaUsuarioProyecto extends Migration
      */
     public function up()
     {
-        Schema::create('usuario_proyecto', function (Blueprint $table) {
+        Schema::create('usuario_proyecto_rol', function (Blueprint $table) {
             $table->foreignId('id_usuario');
             $table->foreignId('id_proyecto');
             $table->foreign('id_usuario', 'fk_usuario_proyecto')->references('id')->on('usuario')->onDelete('restrict')->onUpdate('restrict');
