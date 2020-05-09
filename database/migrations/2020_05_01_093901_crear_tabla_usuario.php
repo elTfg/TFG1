@@ -18,7 +18,7 @@ class CrearTablaUsuario extends Migration
             $table->string('nombre', 50);
             $table->string('apodo', 50)->nullable($value = true)->unique();
             $table->string('email', 100)->nullable($value = false)->unique();
-            $table->timestamps();
+            $table->timestamps(); //algo
         });
     }
 
