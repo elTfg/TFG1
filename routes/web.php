@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('/layouts/login');
 });
 Route::get('/proyectos', function () {
     return "Aqui ira la pestaña proyectos";
