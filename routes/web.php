@@ -41,7 +41,7 @@ Route::get('/estadisticas', function () {
 });
 
 Route::get('/mis_notas', function () {
-    return "Aqui ira la pagina con las notas";
+    return "Aqui ira la pagina con las notas del curso";
 });
 Route::get('/mis_notas/gestion_de_notas', function () {
     return "Aqui ira la pagina con formularios (añadir, actualizar, leer, etc)";
