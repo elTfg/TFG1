@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('/layouts/login');
+    return view('/');
 });
 Route::get('/proyectos', function () {
     return "Aqui ira la pestaña proyectos";
@@ -65,6 +65,10 @@ Route::get('/busqueda/avanzada', function () {
     return "Aqui ira la pagina con el formulario de busqueda por campos";
 });
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
 
 Auth::routes();
 
