@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class LoginController extends Controller
 {
@@ -35,14 +36,24 @@ class LoginController extends Controller
             $this->getAuthPassword() => 'required|string'
        ]);
            // valida si lo datos son correctos crea la sesion
-       if (Auth::attempt(['email'=> $datos['email'] , 'password' => $datos['password'] ] )) 
+           Log::debug('Variable: ' . $datos['email'] . " , " . $datos['password']);
+
+           if (Auth::attempt(['email'=> $datos['email'] , 'password' => $datos['password'] ] )) {
+
+            Log::debug("entro");
+
+            return redirect('home');
+        }
+        
+        Log::debug("no entro"); 
 
         // si son incorrectos devuelve un mensaje
         return back()
             ->withErrors([$this->username() =>  trans('auth.failed')])
             ->withInput(request([$this->username()]));
 
-            //return $this->getAuthPassword();
+            Log::debug("no entro x2");
+           /** return $this->getAuthPassword(); */
     }
 
 
