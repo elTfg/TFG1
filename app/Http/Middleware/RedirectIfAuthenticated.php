@@ -24,4 +24,6 @@ class RedirectIfAuthenticated
 
         return $next($request);
     }
+
+    protected $table = "usuario";
 }
