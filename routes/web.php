@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,8 +21,8 @@ Route::get('/proyectos', function () {
     return "Aqui ira la pestaña proyectos";
 });
 
-Route::get('/proyectos', function () {
-    return "Aqui ira la pestaña proyectos";
+Route::get('/entrada', function () {
+    return view('/entrada');
 });
 
 Route::get('/Compañeros', function () {
@@ -65,10 +66,6 @@ Route::get('/busqueda/avanzada', function () {
     return "Aqui ira la pagina con el formulario de busqueda por campos";
 });
 
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
 
 Auth::routes();
 
