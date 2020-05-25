@@ -12,6 +12,8 @@
     <title>Proyectate tus propios proyectos</title>
   </head>
   <body>
+
+    <!-- AQUI EMPIEZA EL MENU LATERAL -->
     <div class="sidebar-container">
         <div class="sidebar-logo">
           Proyectate
@@ -64,6 +66,9 @@
           </li>
         </ul>
       </div>
+      <!-- AQUI ACABA EL MENU LATERAL -->
+
+      <!-- AQUI EMPIEZA EL CUERPO DONDE SE TRABAJA -->
       
       <div class="content-container">
       
@@ -81,6 +86,8 @@
       
         </div>
       </div>
+
+      <!-- AQUI ACABA EL CUERPO DONDE SE TRABAJA -->
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

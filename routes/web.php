@@ -20,6 +20,9 @@ Route::get('/', function () {
 Route::get('/base', function () {
     return view('/base');
 });
+Route::get('/plantilla', function () {
+    return view('/plantilla1');
+});
 Route::get('/proyectos', function () {
     return "Aqui ira la pestaña proyectos";
 });
