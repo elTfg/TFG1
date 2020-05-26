@@ -17,12 +17,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('/login');
 });
-Route::get('/base', function () {
-    return view('/base');
-});
+
 Route::get('/plantilla', function () {
     return view('/plantilla1');
 });
+
 Route::get('/proyectos', function () {
     return "Aqui ira la pestaña proyectos";
 });
