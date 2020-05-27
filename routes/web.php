@@ -19,7 +19,7 @@ Route::get('/', function () {
 });
 
 Route::get('/plantilla', function () {
-    return view('/plantilla1');
+    return view('/plantilla');
 });
 
 Route::get('/proyectos', function () {
@@ -61,7 +61,7 @@ Route::get('/perfil/gestion_de_perfil', function () {
 });
 
 Route::get('/historial', function () {
-    return "Aqui ira la pagina con el historial";
+    return view('/historial');
 });
 
 Route::get('/busqueda', function () {

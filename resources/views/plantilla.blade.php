@@ -8,7 +8,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Simple Sidebar - Start Bootstrap Template</title>
+  <title>PROYECTATE</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
   <link href="{{ asset('css/simple-sidebar.css') }}" rel="stylesheet">
 
@@ -22,7 +22,7 @@
     <div class="bg-light border-right" id="sidebar-wrapper">
       <div class="sidebar-heading">Start Bootstrap </div>
       <div class="list-group list-group-flush">
-        <a href="#" class="list-group-item list-group-item-action bg-light">Proyectos Activos</a>
+        <a href="/login" class="list-group-item list-group-item-action bg-light">Proyectos Activos</a>
         <a href="#" class="list-group-item list-group-item-action bg-light">Crear usuarios</a>
         <a href="#" class="list-group-item list-group-item-action bg-light">Estadísticas</a>
         <a href="#" class="list-group-item list-group-item-action bg-light">Info proy</a>
@@ -30,22 +30,24 @@
         <a href="#" class="list-group-item list-group-item-action bg-light">Tareas</a>
         <a href="#" class="list-group-item list-group-item-action bg-light">Mis notas</a>
         <a href="#" class="list-group-item list-group-item-action bg-light">Perfil</a>
-        <a href="#" class="list-group-item list-group-item-action bg-light">Historial</a>
+        <a href="/historial" class="list-group-item list-group-item-action bg-light">Historial</a>
       </div>
     </div>
     <!-- /#sidebar-wrapper -->
 
     <!-- Page Content -->
     <div id="page-content-wrapper">
-
       <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
-        </button>
+        </button>-->
+        <div class="d-inline-flex p-2 bd-highlight justify-content-center" id="titulo_navbar">
+            @yield('cabecera')
+        </div>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
           <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-              
               <button type="button" class="btn btn-outline-danger" href="{{ route('logout') }}"
                             onclick="event.preventDefault();
                             document.getElementById('logout-form').submit();">{{ __('Salir') }}</button> <!-- boton logout rojo-->
@@ -77,8 +79,9 @@
       </nav>
 
       <div class="container-fluid">
-        <h1 class="mt-4">Simple Sidebar</h1>
-        
+        <div class="unnombre">
+          @yield('unnombre')
+        </div>
       </div>
     </div>
     <!-- /#page-content-wrapper -->

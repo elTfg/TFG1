@@ -82,3 +82,9 @@
 .content-container {
   padding-left: 220px;
 }
+
+.titulo_navbar{
+  width: max-content;
+  text-align: center;
+  padding-left: 400%;
+  }
