@@ -20,7 +20,7 @@
 
     <!-- Sidebar -->
     <div class="bg-light border-right" id="sidebar-wrapper">
-      <div class="sidebar-heading">Start Bootstrap </div>
+      <div class="sidebar-heading">Proyectate </div>
       <div class="list-group list-group-flush">
         <a href="/login" class="list-group-item list-group-item-action bg-light">Proyectos Activos</a>
         <a href="#" class="list-group-item list-group-item-action bg-light">Crear usuarios</a>
