@@ -64,6 +64,14 @@ Route::get('/historial', function () {
     return view('/historial');
 });
 
+Route::get('/historial-proyecto', function () {
+    return view('/historial-proyecto');
+});
+
+Route::get('/historial-tarea', function () {
+    return view('/historial-tarea');
+});
+
 Route::get('/busqueda', function () {
     return "Aqui ira la pagina de busqueda por campo nombre de proyecto";
 });
