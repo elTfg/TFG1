@@ -14,12 +14,16 @@ class CrearTablaUsuarioRol extends Migration
     public function up()
     {
         Schema::create('usuario_rol', function (Blueprint $table) {
-            $table->foreignId('id_usuario');
-            $table->foreignId('id_rol');
-            $table->boolean('estado');
-            $table->foreign('id_usuario', 'fk_usuario_rol')->references('id')->on('usuario')->onDelete('restrict')->onUpdate('restrict');
-            $table->foreign('id_rol', 'fk_rol_usuario')->references('id')->on('rol')->onDelete('restrict')->onUpdate('restrict');
-            $table->timestamps();
+            
+            $table->foreignId('usuario_id');
+            $table->foreignId('rol_id');
+            //Seteo los campos y despues asigno las claves foraneas.
+            $table->foreign('usuario_id', 'fk_usuario_rol')->references('id')->on('usuario')->onDelete('cascade');
+            $table->foreign('rol_id', 'fk_rol_usuario')->references('id')->on('rol')->onDelete('cascade');
+
+            $table->primary(['usuario_id','rol_id']);
+
+
         });
     }
 
