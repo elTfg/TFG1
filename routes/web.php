@@ -18,6 +18,9 @@ Route::get('/', function () {
     return view('/login');
 });
 
+Route::get('/roles', 'PermisoController@permiso');
+
+
 Route::get('/plantilla', function () {
     return view('/plantilla');
 });

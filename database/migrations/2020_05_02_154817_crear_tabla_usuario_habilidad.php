@@ -14,11 +14,14 @@ class CrearTablaUsuarioHabilidad extends Migration
     public function up()
     {
         Schema::create('usuario_habilidad', function (Blueprint $table) {
-            $table->foreignId('id_usuario');
-            $table->foreignId('id_habilidad');
-            $table->foreign('id_usuario')->references('id')->on('usuario')->onDelete('restrict')->onUpdate('restrict');
-            $table->foreign('id_habilidad')->references('id')->on('habilidad')->onDelete('restrict')->onUpdate('restrict');
-            $table->timestamps();
+            $table->foreignId('usuario_id');
+            $table->foreignId('habilidad_id');
+
+            $table->foreign('usuario_id')->references('id')->on('usuario')->onDelete('restrict')->onUpdate('restrict');
+            $table->foreign('habilidad_id')->references('id')->on('habilidad')->onDelete('restrict')->onUpdate('restrict');
+            
+            
+            $table->primary(['usuario_id','habilidad_id']);
 
         });
     }

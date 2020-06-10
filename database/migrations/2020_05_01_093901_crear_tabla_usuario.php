@@ -17,9 +17,11 @@ class CrearTablaUsuario extends Migration
             $table->id();
             $table->string('nombre', 50);
             $table->string('apodo', 50)->nullable($value = true)->unique();
-            $table->string('email', 100)->nullable($value = false)->unique();
+            $table->string('email', 190)->unique();
+            $table->timestamp('email_verificado_el')->nullable();            
             $table->string('password', 100);
-            $table->timestamps(); //algo
+            $table->rememberToken(); // este campo sirve como baliza para que se almacenen los datos de sesion para mantenerla abierta
+            $table->timestamps();
         });
     }
 

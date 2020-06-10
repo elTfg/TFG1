@@ -14,14 +14,18 @@ class CrearTablaUsuarioTarea extends Migration
     public function up()
     {
         Schema::create('usuario_tarea', function (Blueprint $table) {
-            $table->foreignId('id_usuario');
-            $table->foreignId('id_tarea');
+            $table->foreignId('usuario_id');
+            $table->foreignId('tarea_id');
+
             $table->enum('estado', ['no_iniciada', 'iniciada', 'pausada', 'finalizada'])->default('no_iniciada');
             $table->date('iniciada_el');
             $table->date('finalizada_el');
-            $table->foreign('id_usuario', 'fk_usuario_tarea')->references('id')->on('usuario')->onDelete('restrict')->onUpdate('restrict');
-            $table->foreign('id_tarea', 'fk_tarea_usuario')->references('id')->on('tarea')->onDelete('restrict')->onUpdate('restrict');
+
+            $table->foreign('usuario_id', 'fk_usuario_tarea')->references('id')->on('usuario')->onDelete('restrict')->onUpdate('restrict');
+            $table->foreign('tarea_id', 'fk_tarea_usuario')->references('id')->on('tarea')->onDelete('restrict')->onUpdate('restrict');
             $table->timestamps();
+
+            $table->primary(['usuario_id','tarea_id']);
         });
     }
 
