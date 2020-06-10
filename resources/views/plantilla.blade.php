@@ -22,14 +22,16 @@
     <div class="bg-light border-right" id="sidebar-wrapper">
       <div class="sidebar-heading">Proyectate </div>
       <div class="list-group list-group-flush">
-        <a href="/login" class="list-group-item list-group-item-action bg-light">Proyectos Activos</a>
-        <a href="#" class="list-group-item list-group-item-action bg-light">Crear usuarios</a>
+        <a href="/proyectos-activos" class="list-group-item list-group-item-action bg-light">Proyectos Activos</a>
+        <a href="/crear-usuario" class="list-group-item list-group-item-action bg-light">Crear usuarios</a>
+        <a href="crear-permiso" class="list-group-item list-group-item-action bg-light">Crear permisos</a>
+        <a href="crear-rol" class="list-group-item list-group-item-action bg-light">Crear roles</a>
         <a href="#" class="list-group-item list-group-item-action bg-light">Estadísticas</a>
-        <a href="#" class="list-group-item list-group-item-action bg-light">Info proy</a>
-        <a href="#" class="list-group-item list-group-item-action bg-light">Compañeros</a>
-        <a href="#" class="list-group-item list-group-item-action bg-light">Tareas</a>
-        <a href="#" class="list-group-item list-group-item-action bg-light">Mis notas</a>
-        <a href="#" class="list-group-item list-group-item-action bg-light">Perfil</a>
+        <a href="proy-info" class="list-group-item list-group-item-action bg-light">Información del proyecto</a>
+        <a href="/compañeros" class="list-group-item list-group-item-action bg-light">Compañeros</a>
+        <a href="/tareas" class="list-group-item list-group-item-action bg-light">Tareas</a>
+        <a href="/notas" class="list-group-item list-group-item-action bg-light">Mis notas</a>
+        <a href="/perfil" class="list-group-item list-group-item-action bg-light">Perfil</a>
         <a href="/historial" class="list-group-item list-group-item-action bg-light">Historial</a>
       </div>
     </div>

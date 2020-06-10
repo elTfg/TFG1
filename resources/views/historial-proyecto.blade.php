@@ -26,6 +26,13 @@
         color: white;
         text-decoration:none;
     }
+
+    #atras{
+      position: absolute;
+      top:10%;
+      left:15%;
+      text-decoration:none;
+    }
 </style> 
 
 
@@ -80,5 +87,6 @@
               <a href="historial-tarea" id="boton-proyecto"><button type="button" class="btn btn-lg btn-block btn-primary">Ver tarea</button></a>
             </div>
           </div>
+          <a href="historial" id="atras"><button type="button" class="btn btn-lg btn-block btn-primary">Atras</button></a>
     </div>
 @endsection

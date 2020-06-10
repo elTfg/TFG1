@@ -26,12 +26,44 @@ Route::get('/proyectos', function () {
     return "Aqui ira la pestaña proyectos";
 });
 
+Route::get('/tareas', function () {
+    return view('/tareas');
+});
+
+Route::get('/tarea-concreto', function () {
+    return view('/tarea-concreto');
+});
+
 Route::get('/entrada', function () {
     return view('/entrada');
 });
 
-Route::get('/Compañeros', function () {
-    return "Aqui ira la pestaña con los compañeros del proyecto";
+Route::get('/compañeros', function () {
+    return view('/compañeros');
+});
+
+Route::get('/proy-info', function () {
+    return view('/proy-info');
+});
+
+Route::get('/proyectos-activos', function () {
+    return view('/proyectos-activos');
+});
+
+Route::get('/crear-proyecto', function () {
+    return view('/crear-proyecto');
+});
+
+Route::get('/crear-usuario', function () {
+    return view('/crear-usuario');
+});
+
+Route::get('/crear-permiso', function () {
+    return view('/crear-permiso');
+});
+
+Route::get('/crear-rol', function () {
+    return view('/crear-rol');
 });
 
 Route::get('/usuarios', function () {
@@ -46,16 +78,22 @@ Route::get('/estadisticas', function () {
     return "Aqui ira la pestaña estadisticas en tiempo";
 });
 
-Route::get('/mis_notas', function () {
-    return "Aqui ira la pagina con las notas del curso";
+Route::get('/notas', function () {
+    return view('/notas');
 });
+
+Route::get('/crear-nota', function () {
+    return view('/crear-nota');
+});
+
 Route::get('/mis_notas/gestion_de_notas', function () {
     return "Aqui ira la pagina con formularios (añadir, actualizar, leer, etc)";
 });
 
 Route::get('/perfil', function () {
-    return "Aqui ira la pagina con las notas";
+    return view('/perfil');
 });
+
 Route::get('/perfil/gestion_de_perfil', function () {
     return "Aqui ira la pagina con formularios (añadir, actualizar, leer, etc)";
 });
