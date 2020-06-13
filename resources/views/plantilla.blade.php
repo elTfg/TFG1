@@ -23,9 +23,7 @@
       <div class="sidebar-heading">Proyectate </div>
       <div class="list-group list-group-flush">
         <a href="/proyectos-activos" class="list-group-item list-group-item-action bg-light">Proyectos Activos</a>
-        <a href="/crear-usuario" class="list-group-item list-group-item-action bg-light">Crear usuarios</a>
-        <a href="crear-permiso" class="list-group-item list-group-item-action bg-light">Crear permisos</a>
-        <a href="crear-rol" class="list-group-item list-group-item-action bg-light">Crear roles</a>
+        <a href="/administracion" class="list-group-item list-group-item-action bg-light">Administración</a>
         <a href="#" class="list-group-item list-group-item-action bg-light">Estadísticas</a>
         <a href="proy-info" class="list-group-item list-group-item-action bg-light">Información del proyecto</a>
         <a href="/compañeros" class="list-group-item list-group-item-action bg-light">Compañeros</a>

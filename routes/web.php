@@ -57,8 +57,8 @@ Route::get('/crear-proyecto', function () {
     return view('/crear-proyecto');
 });
 
-Route::get('/crear-usuario', function () {
-    return view('/crear-usuario');
+Route::get('/administracion', function () {
+    return view('/administracion');
 });
 
 Route::get('/crear-permiso', function () {
