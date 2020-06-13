@@ -22,7 +22,11 @@ class CrearTablaProyecto extends Migration
             $table->date('fecha_inicio_prevista');
             $table->date('fecha_fin_prevista');
             $table->enum('estado', ['no_iniciado', 'iniciado', 'pausado', 'finalizado'])->default('no_iniciado');
+            $table->foreignId('usuario_id');
             $table->timestamps();
+
+
+            $table->foreign('usuario_id', 'fk_usuario_proyecto')->references('id')->on('usuario')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

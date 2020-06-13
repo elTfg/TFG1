@@ -17,11 +17,15 @@ class CrearTablaTarea extends Migration
             $table->id();
             $table->string('nombre_tarea', 50)->nullable($value= false);
             $table->text('descripcion_tarea');
-            $table->date('fecha_inicio_prevista');
-            $table->date('fecha_fin_prevista');
+            $table->timestamps();
             $table->unsignedSmallInteger('n_horas_asignadas');
+            $table->enum('estado', ['no_iniciada', 'iniciada', 'pausada', 'finalizada'])->default('no_iniciada');
             $table->timestamp('creada_el');
             $table->timestamp('finalizada_el');
+            $table->foreignId('proyecto_id');
+
+
+            $table->foreign('proyecto_id', 'fk_proyecto_tarea')->references('id')->on('proyecto')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

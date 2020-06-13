@@ -83,8 +83,21 @@ class User extends Authenticatable
 
         return $this->belongsToMany(Permiso::class, 'usuario_permiso', 'usuario_id', 'permiso_id');
     }
-    
 
-    
+    public function proyectos()
+    {
+        return $this->belongsTo(Proyecto::class, 'usuario_id');
+    }
 
+    public function tareas()
+    {
+        return $this->hasManyThrough(Tarea::class, Proyecto::class);
+    }
+    
+    public function notas()
+    {
+        return $this->hasMany(Nota::class, 'usuario_id');
+    }
+
+   
 }
