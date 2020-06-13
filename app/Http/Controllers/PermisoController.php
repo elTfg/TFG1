@@ -89,8 +89,6 @@ class PermisoController extends Controller
 
         
         return redirect()->back();
-        
-
-
     }
+
 }

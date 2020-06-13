@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Nota;
 
 class NotaController extends Controller
 {
@@ -13,7 +14,7 @@ class NotaController extends Controller
      */
     public function index()
     {
-        //
+        return view('/notas');
     }
 
     /**
@@ -23,7 +24,7 @@ class NotaController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**

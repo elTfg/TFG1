@@ -20,6 +20,8 @@ Route::get('/', function () {
 
 Route::get('/roles', 'PermisoController@permiso');
 
+Route::get('/administracion','UsuarioController@index');
+
 
 Route::get('/plantilla', function () {
     return view('/plantilla');
@@ -57,9 +59,7 @@ Route::get('/crear-proyecto', function () {
     return view('/crear-proyecto');
 });
 
-Route::get('/administracion', function () {
-    return view('/administracion');
-});
+
 
 Route::get('/crear-permiso', function () {
     return view('/crear-permiso');

@@ -69,10 +69,11 @@
                <button type="button" class="btn btn-danger">Cancelar</button>
         </div>
         <div class="card-body">
-          <p class="notas">Ver usuarios:</p><br/>
-          <p class="notas">Root</p>
-          <p class="notas">Pruebas</p>
-          <p class="notas">Mariajo</p>
+          <ul>
+          @foreach ($listaUsuarios as $usuario)
+            <li>{{ $usuario->nombre }} </li>
+          @endforeach
+          </ul>
         </div>
       </div> 
       <div class="d-inline card mb-4 shadow-sm" id="proyecto-historial">
