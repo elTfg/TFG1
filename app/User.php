@@ -43,7 +43,7 @@ class User extends Authenticatable
    // const UPDATED_AT = 'updatedAt';
 
     protected $fillable = [
-         'nombre','email', 'password',
+         'nombre','email', 'apodo', 'password',
     ];
 
     protected $hidden = [

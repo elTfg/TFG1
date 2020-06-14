@@ -57,16 +57,14 @@
         <div class="card-header">
           <h4 class="my-0 font-weight-normal">Crear usuarios</h4>
         </div>
-        <div class="card-body">
-          <p class="notas">Nombre:</p>
-               <input type="text" id="nombre" name="nombre"><br/>
-               <p class="notas">Apodo:</p>
-               <input type="text" id="nombre" name="nombre"><br/>
-               <p class="notas">Email:</p>
-               <input type="text" id="nombre" name="nombre"><br/>
-               <br/>
-               <button type="button" class="btn btn-success">Aceptar</button>
-               <button type="button" class="btn btn-danger">Cancelar</button>
+        <div class="card-body text-left">
+            <div class="text-center">
+              @if (Route::has('register'))
+                <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+              @endif
+              <button type="button" class="btn btn-danger text-center">Cancelar</button>
+              <button type="button" class="btn btn-primary">Ver Usuarios</button>
+            </div>
         </div>
         <div class="card-body">
           <ul>
@@ -91,9 +89,9 @@
           <p class="notas">Asignar roles a usuarios:</p><br/>
           <p class="notas">Rol:</p>
           <select name="usuarios">
-            <option value="value1">Administrador</option> 
-            <option value="value2">supervisor</option>
-            <option value="value3">usuario</option>
+            @foreach ($listaRoles as $rol)
+              <option>{{ $rol->nombre_rol }} </option>
+            @endforeach
           </select>
           <br/><br/>
           <p class="notas">Usuario:</p>

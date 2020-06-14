@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
 use Illuminate\Support\Facades\DB;
 
 class UsuarioController extends Controller
@@ -15,7 +16,8 @@ class UsuarioController extends Controller
     public function index()
     {
         $listaUsuarios = DB::table('usuario')->get();
-        return view('administracion', compact('listaUsuarios'));
+        $listaRoles = DB::table('rol')->get();
+        return view('administracion', compact('listaUsuarios','listaRoles'));
     }
 
     /**
@@ -25,7 +27,7 @@ class UsuarioController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**

@@ -21,6 +21,7 @@ Route::get('/', function () {
 Route::get('/roles', 'PermisoController@permiso');
 
 Route::get('/administracion','UsuarioController@index');
+Route::resource('usuarios','UsuarioController');
 
 
 Route::get('/plantilla', function () {
