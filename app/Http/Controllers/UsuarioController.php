@@ -15,7 +15,9 @@ class UsuarioController extends Controller
     public function index()
     {
         $listaUsuarios = DB::table('usuario')->get();
-        return view('administracion', compact('listaUsuarios'));
+        $listaRoles = DB::table('rol')->get();
+        $listaPermisos = DB::table('permiso')->get();
+        return view('administracion', compact('listaUsuarios','listaRoles','listaPermisos'));
     }
 
     /**

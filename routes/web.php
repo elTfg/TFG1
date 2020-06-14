@@ -22,6 +22,11 @@ Route::get('/roles', 'PermisoController@permiso');
 
 Route::get('/administracion','UsuarioController@index');
 
+/*Route::get('/proyectos-activos','ProyectoController@index');*/
+
+Route::get('/historial','HistorialController@index');
+
+Route::resource('historial_proyecto','HistorialController');
 
 Route::get('/plantilla', function () {
     return view('/plantilla');
@@ -101,9 +106,9 @@ Route::get('/perfil/gestion_de_perfil', function () {
     return "Aqui ira la pagina con formularios (añadir, actualizar, leer, etc)";
 });
 
-Route::get('/historial', function () {
+/*Route::get('/historial', function () {
     return view('/historial');
-});
+});*/
 
 Route::get('/historial-proyecto', function () {
     return view('/historial-proyecto');

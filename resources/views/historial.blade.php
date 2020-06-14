@@ -39,51 +39,19 @@
   
   <div class="container" id="proyectos-historial">
     <div class="card-deck mb-3 text-center">
-      <div class="d-inline card mb-4 shadow-sm" id="proyecto-historial">
-        <div class="card-header">
-          <h4 class="my-0 font-weight-normal">Proyecto 1</h4>
-        </div>
-        <div class="card-body">
-          <ul class="list-unstyled mt-3 mb-4">
-            <li>Descripción del proyecto, aquí tendremos que poner una breve descripción del proyecto, no se que más poner para rellenar texto asi que yo sigo escribiendo</li>
-          </ul>
-          <a href="historial-proyecto" id="boton-proyecto"><button type="button" class="btn btn-lg btn-block btn-primary">Ver proyecto</button></a>
-        </div>
-      </div>
-      <div class="d-inline card mb-4 shadow-sm" id="proyecto-historial">
-        <div class="card-header">
-          <h4 class="my-0 font-weight-normal">Proyecto 2</h4>
-        </div>
-        <div class="card-body">
-          <ul class="list-unstyled mt-3 mb-4">
-            <li>Descripción del proyecto, aquí tendremos que poner una breve descripción del proyecto, no se que más poner para rellenar texto asi que yo sigo escribiendo</li>
-          </ul>
-          <a href="historial-proyecto" id="boton-proyecto"><button type="button" class="btn btn-lg btn-block btn-primary">Ver proyecto</button></a>
-        </div>
-      </div>
-      <div class="d-inline card mb-4 shadow-sm" id="proyecto-historial">
-        <div class="card-header">
-          <h4 class="my-0 font-weight-normal">Proyecto 3</h4>
-        </div>
-        <div class="card-body">
-          <ul class="list-unstyled mt-3 mb-4">
-            <li>Descripción del proyecto, aquí tendremos que poner una breve descripción del proyecto, no se que más poner para rellenar texto asi que yo sigo escribiendo</li>
-          </ul>
-          <a href="historial-proyecto" id="boton-proyecto"><button type="button" class="btn btn-lg btn-block btn-primary">Ver proyecto</button></a>
-        </div>
-      </div>
-      <div class="d-inline card mb-4 shadow-sm" id="proyecto-historial">
-        <div class="card-header">
-          <h4 class="my-0 font-weight-normal">Proyecto 4</h4>
-        </div>
-        <div class="card-body">
-          <ul class="list-unstyled mt-3 mb-4">
-            <li>Descripción del proyecto, aquí tendremos que poner una breve descripción del proyecto, no se que más poner para rellenar texto asi que yo sigo escribiendo</li>
-          </ul>
-          <a href="historial-proyecto" id="boton-proyecto"><button type="button" class="btn btn-lg btn-block btn-primary">Ver proyecto</button></a>
-        </div>
-      </div>
-      
+      @foreach ($Proyectos as $proyecto)
+            <div class="d-inline card mb-4 shadow-sm" id="proyecto-historial">
+              <div class="card-header">
+                <h4 class="my-0 font-weight-normal">{{ $proyecto->titulo_proyecto }}</h4>
+              </div>
+              <div class="card-body">
+                <ul class="list-unstyled mt-3 mb-4">
+                  <li>{{ $proyecto->descripcion_larga }}</li>
+                </ul>
+                <a href="{{ route('historial.show')}}" id="boton-proyecto"><button type="button" class="btn btn-lg btn-block btn-primary">Ver proyecto</button></a>
+              </div>
+            </div>
+          @endforeach
     </div>
   </div>
   

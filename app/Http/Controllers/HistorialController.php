@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Proyecto;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class ProyectoController extends Controller
+class HistorialController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +15,8 @@ class ProyectoController extends Controller
      */
     public function index()
     {
-        //
+        $Proyectos = DB::table('proyecto')->get();
+        return view('historial', compact('Proyectos'));
     }
 
     /**
@@ -46,7 +48,7 @@ class ProyectoController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('historial-proyecto',compact('id'));
     }
 
     /**

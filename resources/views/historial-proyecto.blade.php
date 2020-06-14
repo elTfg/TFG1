@@ -54,6 +54,7 @@
   
   <div class="container">
     <div class="card-deck mb-3 text-center">
+      @foreach ($Proyectos as $proyecto)
         <div class="d-inline card mb-4 shadow-sm" id="proyecto-historial">
             <div class="card-header">
               <h4 class="my-0 font-weight-normal">Tarea 1</h4>
@@ -65,28 +66,7 @@
               <a href="historial-tarea" id="boton-proyecto"><button type="button" class="btn btn-lg btn-block btn-primary">Ver tarea</button></a>
             </div>
           </div>
-          <div class="d-inline card mb-4 shadow-sm" id="proyecto-historial">
-            <div class="card-header">
-              <h4 class="my-0 font-weight-normal">Tarea 2</h4>
-            </div>
-            <div class="card-body">
-              <ul class="list-unstyled mt-3 mb-4">
-                <li>Descripción del proyecto, aquí tendremos que poner una breve descripción del proyecto, no se que más poner para rellenar texto asi que yo sigo escribiendo</li>
-              </ul>
-              <a href="historial-tarea" id="boton-proyecto"><button type="button" class="btn btn-lg btn-block btn-primary">Ver tarea</button></a>
-            </div>
-          </div>
-          <div class="d-inline card mb-4 shadow-sm" id="proyecto-historial">
-            <div class="card-header">
-              <h4 class="my-0 font-weight-normal">Tarea 3</h4>
-            </div>
-            <div class="card-body">
-              <ul class="list-unstyled mt-3 mb-4">
-                <li>Descripción del proyecto, aquí tendremos que poner una breve descripción del proyecto, no se que más poner para rellenar texto asi que yo sigo escribiendo</li>
-              </ul>
-              <a href="historial-tarea" id="boton-proyecto"><button type="button" class="btn btn-lg btn-block btn-primary">Ver tarea</button></a>
-            </div>
-          </div>
+          @endforeach
           <a href="historial" id="atras"><button type="button" class="btn btn-lg btn-block btn-primary">Atras</button></a>
     </div>
 @endsection
