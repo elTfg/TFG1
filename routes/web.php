@@ -18,7 +18,8 @@ use Illuminate\Support\Facades\Route;
 // Para asignar los permisos por defecto a los roles /
 Route::get('/roles', 'PermisoController@permiso');
 // Fin
-// Devuelve el metodo show login del controlador Login 
+// Devuelve el metodo show login del controlador Login
+Auth::routes(['register' => false]);
 Route::get('/', 'auth\LoginController@showLoginForm');
 Route::post('/register','UsuarioController@store');
 
@@ -32,7 +33,7 @@ Route::post('registro', 'Auth\RegisterController@register');*/
 Route::get('/administracion','UsuarioController@index');
 Route::resource('usuarios','UsuarioController');
 Route::get('/historial','HistorialController@index');
-Auth::routes(['register' => false]);
+
 Route::get('/home', 'HomeController@index')->name('home');
 
 

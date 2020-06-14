@@ -39,16 +39,7 @@ class UsuarioController extends Controller
      */
     public function store(Request $request)
     {
-        $reglas = array(
-            'nombre' => 'required',
-            'apodo',
-            'email'=>'required|email',
-            'password' => 'required|confirm'
-        );
-
-        $usuario = User::create(request('nombre','apodo','email','password'));
-        auth()->login($usuario);
-        return redirect()->to('/administracion');
+        //
     }
 
     /**
