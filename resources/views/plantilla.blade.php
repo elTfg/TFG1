@@ -48,6 +48,11 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
           <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+
+            @if (Auth::user())
+                <a class="btn btn-outline-primary" href="{{ route('register') }}">{{ __('Registrar') }}</a>&nbsp;&nbsp;&nbsp;
+            @endif
+
               <button type="button" class="btn btn-outline-danger" href="{{ route('logout') }}"
                             onclick="event.preventDefault();
                             document.getElementById('logout-form').submit();">{{ __('Salir') }}</button> <!-- boton logout rojo-->

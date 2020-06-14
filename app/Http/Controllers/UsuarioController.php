@@ -17,7 +17,12 @@ class UsuarioController extends Controller
     {
         $listaUsuarios = DB::table('usuario')->get();
         $listaRoles = DB::table('rol')->get();
+<<<<<<< HEAD
         return view('administracion', compact('listaUsuarios','listaRoles'));
+=======
+        $listaPermisos = DB::table('permiso')->get();
+        return view('administracion', compact('listaUsuarios','listaRoles','listaPermisos'));
+>>>>>>> 46bbb251f8fcf039f174320e04161e6eb6f87fc3
     }
 
     /**

@@ -89,16 +89,22 @@
           <p class="notas">Asignar roles a usuarios:</p><br/>
           <p class="notas">Rol:</p>
           <select name="usuarios">
+<<<<<<< HEAD
             @foreach ($listaRoles as $rol)
               <option>{{ $rol->nombre_rol }} </option>
             @endforeach
+=======
+            @foreach ($listaRoles as $roles)
+            <option>{{ $roles->nombre_rol }} </option>
+          @endforeach
+>>>>>>> 46bbb251f8fcf039f174320e04161e6eb6f87fc3
           </select>
           <br/><br/>
           <p class="notas">Usuario:</p>
           <select name="usuarios">
-            <option value="value1">Root</option> 
-            <option value="value2">Pruebas</option>
-            <option value="value3">Mariajo</option>
+            @foreach ($listaUsuarios as $usuario)
+            <option>{{ $usuario->nombre }} </option>
+          @endforeach
           </select>
           <br/><br/>
           <button type="button" class="btn btn-success">Aceptar</button>
@@ -121,16 +127,16 @@
           <p class="notas">Asignar permisos a roles:</p><br/>
           <p class="notas">Permisos:</p>
           <select name="usuarios">
-            <option value="value1">ver usuarios</option> 
-            <option value="value2">modificar usuarios</option>
-            <option value="value3">quitar usuarios</option>
+            @foreach ($listaPermisos as $permisos)
+            <option>{{ $permisos->nombre_permiso }} </option>
+          @endforeach
           </select>
           <br/><br/>
           <p class="notas">Roles:</p>
           <select name="usuarios">
-            <option value="value1">Administrador</option> 
-            <option value="value2">supervisor</option>
-            <option value="value3">usuario</option>
+            @foreach ($listaRoles as $roles)
+            <option>{{ $roles->nombre_rol }} </option>
+          @endforeach
           </select>
           <br/><br/>
           <button type="button" class="btn btn-success">Aceptar</button>
