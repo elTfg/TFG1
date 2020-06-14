@@ -48,7 +48,7 @@ class HistorialController extends Controller
      */
     public function show($id)
     {
-        return view('historial-proyecto',compact('id'));
+       // return view('historial-proyecto',compact('id'));
     }
 
     /**

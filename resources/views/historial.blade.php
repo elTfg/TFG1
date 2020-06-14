@@ -48,7 +48,7 @@
                 <ul class="list-unstyled mt-3 mb-4">
                   <li>{{ $proyecto->descripcion_larga }}</li>
                 </ul>
-                <a href="{{ route('historial.show')}}" id="boton-proyecto"><button type="button" class="btn btn-lg btn-block btn-primary">Ver proyecto</button></a>
+                <a href="{{ route('historial-proyecto')}}" id="boton-proyecto"><button type="button" class="btn btn-lg btn-block btn-primary">Ver proyecto</button></a>
               </div>
             </div>
           @endforeach

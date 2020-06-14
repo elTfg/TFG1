@@ -59,19 +59,64 @@
         </div>
         <div class="card-body text-left">
             <div class="text-center">
-              @if (Route::has('register'))
-                <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+              @if (Auth::user()->tieneRol('administrador'))
+              <form method="POST" action="/register">
+                @csrf
+                <div class="text-left" style="width: 100%;">
+                  <label for="nombre" style="text-align: left;">Nombre: </label>
+                  <input type="text" width="100%" id="nombre" class="form-control  @error('nombre') is-invalid @enderror" value="{{ old('nombre') }}" required autocomplete="nombre" autofocus/>
+                  @error('nombre')
+                  <span class="invalid-feedback" role="alert">
+                      <strong>{{ $message }}</strong>
+                  </span>
+                  @enderror
+                </div>
+                <div class="text-left" style="width: 100%;">
+                  <label for="email" style="text-align: left;">Email: </label>
+                  <input type="text" width="100%" id="nombre" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email"/>
+                  @error('email')
+                    <span class="invalid-feedback" role="alert">
+                      <strong>{{ $message }}</strong>
+                    </span>
+                  @enderror
+                </div>
+                <div class="text-left" style="width: 100%;">
+                  <label for="apodo" style="text-align: left;">Apodo: </label>
+                  <input type="text" width="100%" class="form-control" value="" id="apodo" placeholder="El apodo es opcional"/>
+                </div>
+                <div class="text-left" style="width: 100%;">
+                  <label for="password" style="text-align: left;">Nueva contraseña: </label>
+                  <input type="password" width="100%" id="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password"/>
+                  @error('password')
+                    <span class="invalid-feedback" role="alert">
+                      <strong>{{ $message }}</strong>
+                    </span>
+                  @enderror
+                </div>
+                <div class="text-left" style="width: 100%;">
+                  <label for="re-entryPassword" style="text-align: left;">Re-Contraseña: </label>
+                  <input type="password" width="100%" class="form-control" id="password_confirmation" name="password_confirmation" required autocomplete="new-password"/>
+                </div>
+                <br>
+                <div class="text-center" style="width: 100%;">
+                  <button type="submit" class="btn btn-primary">
+                   {{ __('Register') }}
+                  </button>
+                </div>
+              </form>
+              @else
+              <div class="card-body">
+                <h3>Listado de usuarios</h3>
+                <ul class="text-left">
+                @foreach ($listaUsuarios as $usuario)
+                  <li>{{ $usuario->nombre }} </li>
+                @endforeach
+                </ul>
+              </div>
+
+              
               @endif
-              <button type="button" class="btn btn-danger text-center">Cancelar</button>
-              <button type="button" class="btn btn-primary">Ver Usuarios</button>
             </div>
-        </div>
-        <div class="card-body">
-          <ul>
-          @foreach ($listaUsuarios as $usuario)
-            <li>{{ $usuario->nombre }} </li>
-          @endforeach
-          </ul>
         </div>
       </div> 
       <div class="d-inline card mb-4 shadow-sm" id="proyecto-historial">
@@ -89,15 +134,9 @@
           <p class="notas">Asignar roles a usuarios:</p><br/>
           <p class="notas">Rol:</p>
           <select name="usuarios">
-<<<<<<< HEAD
             @foreach ($listaRoles as $rol)
               <option>{{ $rol->nombre_rol }} </option>
             @endforeach
-=======
-            @foreach ($listaRoles as $roles)
-            <option>{{ $roles->nombre_rol }} </option>
-          @endforeach
->>>>>>> 46bbb251f8fcf039f174320e04161e6eb6f87fc3
           </select>
           <br/><br/>
           <p class="notas">Usuario:</p>

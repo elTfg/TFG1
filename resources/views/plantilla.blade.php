@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
+  <meta name="csrf-token" content="{{ csrf_token() }}">
 
   <title>PROYECTATE</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
@@ -49,8 +50,11 @@
 
           <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
 
-            @if (Auth::user())
-                <a class="btn btn-outline-primary" href="{{ route('register') }}">{{ __('Registrar') }}</a>&nbsp;&nbsp;&nbsp;
+            
+            @if (Auth::user()->tieneRol('administrador'))
+              @if (Route::has('register'))
+                <a class="btn btn-outline-primary" href="{{ route('register') }}">{{ __('Registrar') }}</a>&nbsp;
+              @endif
             @endif
 
               <button type="button" class="btn btn-outline-danger" href="{{ route('logout') }}"

@@ -17,12 +17,8 @@ class UsuarioController extends Controller
     {
         $listaUsuarios = DB::table('usuario')->get();
         $listaRoles = DB::table('rol')->get();
-<<<<<<< HEAD
-        return view('administracion', compact('listaUsuarios','listaRoles'));
-=======
         $listaPermisos = DB::table('permiso')->get();
         return view('administracion', compact('listaUsuarios','listaRoles','listaPermisos'));
->>>>>>> 46bbb251f8fcf039f174320e04161e6eb6f87fc3
     }
 
     /**
@@ -43,7 +39,16 @@ class UsuarioController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $reglas = array(
+            'nombre' => 'required',
+            'apodo',
+            'email'=>'required|email',
+            'password' => 'required|confirm'
+        );
+
+        $usuario = User::create(request('nombre','apodo','email','password'));
+        auth()->login($usuario);
+        return redirect()->to('/administracion');
     }
 
     /**

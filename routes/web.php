@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
+use Illuminate\Auth\Events\Login;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -13,19 +15,39 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('/login');
-});
-
+// Para asignar los permisos por defecto a los roles /
 Route::get('/roles', 'PermisoController@permiso');
+// Fin
+// Devuelve el metodo show login del controlador Login 
+Route::get('/', 'auth\LoginController@showLoginForm');
+Route::post('/register','UsuarioController@store');
+
+/*Route::get('registro', 'Auth\RegisterController@showRegistrationForm')->name('register');
+Route::post('registro', 'Auth\RegisterController@register');*/
+
+
+
+
 
 Route::get('/administracion','UsuarioController@index');
 Route::resource('usuarios','UsuarioController');
-
-/*Route::get('/proyectos-activos','ProyectoController@index');*/
-
 Route::get('/historial','HistorialController@index');
+Auth::routes(['register' => false]);
+Route::get('/home', 'HomeController@index')->name('home');
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*Route::get('/proyectos-activos','ProyectoController@index');
 
 Route::resource('historial_proyecto','HistorialController');
 
@@ -107,9 +129,9 @@ Route::get('/perfil/gestion_de_perfil', function () {
     return "Aqui ira la pagina con formularios (añadir, actualizar, leer, etc)";
 });
 
-/*Route::get('/historial', function () {
+Route::get('/historial', function () {
     return view('/historial');
-});*/
+});
 
 Route::get('/historial-proyecto', function () {
     return view('/historial-proyecto');
@@ -124,9 +146,4 @@ Route::get('/busqueda', function () {
 });
 Route::get('/busqueda/avanzada', function () {
     return "Aqui ira la pagina con el formulario de busqueda por campos";
-});
-
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
+});*/
