@@ -28,7 +28,7 @@ class UsuarioController extends Controller
      */
     public function create()
     {
-        
+        return view('create_usuarios');
     }
 
     /**
@@ -39,7 +39,18 @@ class UsuarioController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate(request(), [
+            'nombre' => 'required',
+            'apodo',
+            'email' => 'required|email',
+            'password' => 'required|confirmed'
+        ]);
+        
+        $user = User::create(request(['nombre','apodo', 'email', 'password']));
+        
+        //auth()->login($user);
+        
+        return redirect('administracion');
     }
 
     /**

@@ -21,7 +21,8 @@ Route::get('/roles', 'PermisoController@permiso');
 // Devuelve el metodo show login del controlador Login
 Auth::routes(['register' => false]);
 Route::get('/', 'auth\LoginController@showLoginForm');
-Route::post('/register','UsuarioController@store');
+Route::get('/register','UsuarioController@create');
+Route::post('/register', 'UsuarioController@store');
 
 /*Route::get('registro', 'Auth\RegisterController@showRegistrationForm')->name('register');
 Route::post('registro', 'Auth\RegisterController@register');*/
