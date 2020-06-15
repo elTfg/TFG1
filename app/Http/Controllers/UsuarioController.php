@@ -15,7 +15,7 @@ class UsuarioController extends Controller
      */
     public function index()
     {
-        $listaUsuarios = DB::table('usuario')->get();
+        $listaUsuarios = User::with('roles')->get();
         $listaRoles = DB::table('rol')->get();
         $listaPermisos = DB::table('permiso')->get();
         return view('administracion', compact('listaUsuarios','listaRoles','listaPermisos'));
@@ -41,16 +41,16 @@ class UsuarioController extends Controller
     {
         $this->validate(request(), [
             'nombre' => 'required',
-            'apodo',
             'email' => 'required|email',
+            'apodo' =>'nullable|string',
             'password' => 'required|confirmed'
         ]);
         
-        $user = User::create(request(['nombre','apodo', 'email', 'password']));
+        $user = User::create(request(['nombre', 'email', 'apodo', 'password']));
         
         //auth()->login($user);
         
-        return redirect('administracion');
+        return redirect('administracion')->withSuccess('Genial! Has registrado un nuevo usuario.');
     }
 
     /**

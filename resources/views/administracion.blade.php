@@ -62,6 +62,8 @@
               @if (Auth::user()->tieneRol('administrador'))
               @include('create_usuarios')
                 @yield('formulario')
+              @include('modal_layout')
+                
               @else
               <div class="card-body">
                 <h3>Listado de usuarios</h3>
@@ -74,6 +76,7 @@
 
               
               @endif
+             
             </div>
         </div>
       </div> 
