@@ -63,7 +63,7 @@
             <ul class="list-unstyled mt-3 mb-4">
             <li>{{$proyecto->descripcion_corta}}</li>
             </ul>
-            <a href="historial-proyecto" id="boton-proyecto"><button type="button" class="btn btn-lg btn-block btn-primary">Ver proyecto</button></a><br/>
+            <a href="{{ route('info_proyecto', $proyecto->id) }}" id="boton-proyecto"><button type="button" class="btn btn-lg btn-block btn-primary">Ver proyecto</button></a><br/>
             <a id="boton-proyecto"><button type="button" class="btn btn-lg btn-block btn-danger">Eliminar proyecto</button></a>
         </div>
     </div>

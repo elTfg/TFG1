@@ -19,7 +19,7 @@ class ProyectoController extends Controller
     {
         $users = User::with('roles')->get();
         $proyectos = Proyecto::get();
-        $tareas = DB::table('tarea')->get();
+        $tareas = Tarea::get();
         return view('proyectos.inicio_proyectos', compact('users','proyectos','tareas'));
     }
 
@@ -52,7 +52,10 @@ class ProyectoController extends Controller
      */
     public function show($id)
     {
-        //
+        $proyecto = Proyecto::find($id);
+        $tareas_proyecto=Proyecto::find($id)->tareas;
+
+        return view('proyectos.info_proyecto', ['proyecto'=> $proyecto, 'tareas'=>$tareas_proyecto]);
     }
 
     /**

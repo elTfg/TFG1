@@ -55,35 +55,35 @@ class PermisoController extends Controller
         $usuario1 = New User();
         $usuario1->nombre = 'root';
         $usuario1->email = 'root@proyectate.com';
-        $usuario1->password = bcrypt('1234');
+        $usuario1->password = '1234';
         $usuario1->save();
         $usuario1->roles()->attach($rolAdministrador);
 
         $usuario2 = New User();
         $usuario2->nombre = 'supervisor';
         $usuario2->email = 'supervisor@proyectate.com';
-        $usuario2->password = bcrypt('1234');
+        $usuario2->password = '1234';
         $usuario2->save();
         $usuario2->roles()->attach($rolSupervisor);
 
         $usuario3 = New User();
         $usuario3->nombre = 'trusted User';
         $usuario3->email = 'trusted@proyectate.com';
-        $usuario3->password = bcrypt('1234');
+        $usuario3->password = '1234';
         $usuario3->save();
         $usuario3->roles()->attach($rolTrusted);
 
         $usuario4 = New User();
         $usuario4->nombre = 'paco';
         $usuario4->email = 'paco@proyectate.com';
-        $usuario4->password = bcrypt('1234');
+        $usuario4->password = '1234';
         $usuario4->save();
         $usuario4->roles()->attach($rolUsuario);
 
         $usuario5 = New User();
         $usuario5->nombre = 'visitante';
         $usuario5->email = 'visitante@proyectate.com';
-        $usuario5->password = bcrypt('1234');
+        $usuario5->password = '1234';
         $usuario5->save();
         $usuario5->roles()->attach($rolVisitante);
 
