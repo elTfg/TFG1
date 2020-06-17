@@ -53,8 +53,8 @@
   <div id="boton-top">
     <a href="crear-proyecto" id="crear-proyecto"><button type="button" class="btn btn-lg btn-block btn-primary">Crear proyecto</button></a>
   </div>
-  @foreach ($proyectos as $proyecto)
   <div class="card-deck mb-3 text-center">
+    @foreach ($proyectos as $proyecto)
     <div class="d-inline card mb-4 shadow-sm" id="proyecto-historial">
         <div class="card-header">
             <h4 class="my-0 font-weight-normal">{{$proyecto->titulo_proyecto}}</h4>
@@ -67,8 +67,8 @@
             <a id="boton-proyecto"><button type="button" class="btn btn-lg btn-block btn-danger">Eliminar proyecto</button></a>
         </div>
     </div>
+    @endforeach  
   </div>
-  @endforeach  
 </div>
 
   
