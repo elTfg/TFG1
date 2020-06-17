@@ -41,13 +41,14 @@ Route::delete('/registro/borrar_rol/{rol}','RolController@destroy')->name('borra
 Route::resource('roles','RolController');
 
 Route::get('/proyectos/inicio', 'ProyectoController@index')->name('inicio_proyectos');
-Route::get('/registro/crearRol','RolController@create');
-Route::post('/registroRol', 'RolController@store');
-Route::get('/registro/{rol}','RolController@show');
-Route::get('registro/{rol}/editar_rol', 'RolController@edit')->name('editar_rol');
-Route::match(['put', 'patch'],'/registro/{rol}','RolController@update')->name('actualizar_rol');
-Route::delete('/registro/borrar_rol/{rol}','RolController@destroy')->name('borrar_rol');
-Route::resource('roles','RolController');
+Route::get('/proyecto/crearProyecto','ProyectoController@create');
+Route::get('/proyecto/{proyecto}','ProyectoController@show')->name('info_proyecto');
+Route::post('/proyecto_guardar', 'ProyectoController@store');
+Route::get('/proyecto/{proyecto}','ProyectoController@show');
+Route::get('/proyecto/{proyecto}/editar_proyecto', 'ProyectoController@edit')->name('editar_proyecto');
+Route::match(['put', 'patch'],'/registro/{proyecto}','ProyectoController@update')->name('actualizar_proyecto');
+Route::delete('/proyecto/borrar_proyecto/{proyecto}','ProyectoController@destroy')->name('borrar_proyecto');
+Route::resource('proyectos','ProyectoController');
 
 
 
