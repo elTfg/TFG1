@@ -99,8 +99,6 @@
           </div>
         </div>
       </div>
-     </div>
-
       <div class="d-inline card mb-4 shadow-sm" id="proyecto-historial">
         <div class="card-header">
           <h4 class="my-0 font-weight-normal">Crear permisos</h4>
