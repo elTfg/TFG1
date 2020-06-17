@@ -46,6 +46,9 @@
         <li>Fecha final prevista:</li>
         <li>Estado:</li>
         <li>Creada por:</li>
+        <li>Descripción:</li>
+        <li>Estado:</li>
+        <li>Usuario:</li>
       </ul>
   </div>
   
