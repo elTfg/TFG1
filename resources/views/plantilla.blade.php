@@ -23,7 +23,7 @@
     <div class="bg-light border-right" id="sidebar-wrapper">
       <div class="sidebar-heading">Proyectate </div>
       <div class="list-group list-group-flush">
-        <a href="/proyectos-activos" class="list-group-item list-group-item-action bg-light">Proyectos Activos</a>
+        <a href="{{Route('inicio_proyectos')}}" class="list-group-item list-group-item-action bg-light">Proyectos Activos</a>
         <a href="/administracion" class="list-group-item list-group-item-action bg-light">Administración</a>
         <a href="#" class="list-group-item list-group-item-action bg-light">Estadísticas</a>
         <a href="proy-info" class="list-group-item list-group-item-action bg-light">Información del proyecto</a>
@@ -88,8 +88,16 @@
       </nav>
 
       <div class="container-fluid">
-        <div class="unnombre">
-          @yield('unnombre')
+        <div>
+          @if(!empty(Session::get('success')))
+            <div class="alert alert-success"> {{ Session::get('success') }}</div>
+          @endif
+          @if(!empty(Session::get('error')))
+            <div class="alert alert-danger"> {{ Session::get('error') }}</div>
+          @endif
+        </div>
+        <div class="unnombre"> 
+          @yield('unnombre')          
         </div>
       </div>
     </div>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Rol;
 use Illuminate\Support\Facades\DB;
 
 class UsuarioController extends Controller
@@ -15,10 +16,10 @@ class UsuarioController extends Controller
      */
     public function index()
     {
-        $listaUsuarios = User::with('roles')->get();
-        $listaRoles = DB::table('rol')->get();
-        $listaPermisos = DB::table('permiso')->get();
-        return view('administracion', compact('listaUsuarios','listaRoles','listaPermisos'));
+        $users = User::with('roles')->get();
+        $roles = DB::table('rol')->get();
+        $permisos = DB::table('permiso')->get();
+        return view('usuarios.administracion', compact('users','roles','permisos'));
     }
 
     /**
@@ -28,7 +29,7 @@ class UsuarioController extends Controller
      */
     public function create()
     {
-        return view('create_usuarios');
+        return view('usuarios.create_usuarios');
     }
 
     /**
@@ -43,14 +44,19 @@ class UsuarioController extends Controller
             'nombre' => 'required',
             'email' => 'required|email',
             'apodo' =>'nullable|string',
-            'password' => 'required|confirmed'
+            'password' => 'required|confirmed',
         ]);
         
+        $rol_id = $request->input('rol_id');
+        $rol_id+=1;
         $user = User::create(request(['nombre', 'email', 'apodo', 'password']));
+        $rol = Rol::find($rol_id);
+        $user->roles()->attach($rol);
+
         
         //auth()->login($user);
         
-        return redirect('administracion')->withSuccess('Genial! Has registrado un nuevo usuario.');
+        return redirect('administracion')->with('success','Has registrado un nuevo usuario.');
     }
 
     /**
@@ -72,7 +78,8 @@ class UsuarioController extends Controller
      */
     public function edit($id)
     {
-        //
+        $usuario = User::findOrFail($id);
+        return view('usuarios.editar_usuario', compact('usuario'));
     }
 
     /**
@@ -84,7 +91,19 @@ class UsuarioController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $usuario = User::findOrFail($id);
+                    
+        $datos = $request->validate([
+            'nombre' => 'required',
+            'email' => 'required|email',
+            'apodo' =>'nullable|string',
+            'password' => 'required|confirmed' ]);
+
+       $usuario->update($datos);
+
+  
+        return redirect()->route('administracion')
+                        ->with('success','Usuario modificado satisfactoriamente');
     }
 
     /**
@@ -95,6 +114,9 @@ class UsuarioController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $usuario = User::findOrFail($id);
+        $usuario->delete();
+        return redirect()->route('administracion')
+                                    ->with('success', 'el usuario {{$usuario->id}} fue borrado.');
     }
 }

@@ -16,24 +16,40 @@ use Illuminate\Support\Facades\Route;
 |
 */
 // Para asignar los permisos por defecto a los roles /
-Route::get('/roles', 'PermisoController@permiso');
+Route::get('/usuarios_por_defecto', 'PermisoController@permiso');
 // Fin
 // Devuelve el metodo show login del controlador Login
 Auth::routes(['register' => false]);
 Route::get('/', 'auth\LoginController@showLoginForm');
-Route::get('/registro','UsuarioController@create');
+
+Route::get('/administracion','UsuarioController@index')->name('administracion');
+Route::get('/registro/crearUsuario','UsuarioController@create');
 Route::post('/registro', 'UsuarioController@store');
-
-/*Route::get('registro', 'Auth\RegisterController@showRegistrationForm')->name('register');
-Route::post('registro', 'Auth\RegisterController@register');*/
-
-
-
-
-
-Route::get('/administracion','UsuarioController@index');
+Route::get('/perfil/{user}','UsuarioController@show');
+Route::get('perfil/{user}/editar_info', 'UsuarioController@edit')->name('editar_usuario');
+Route::match(['put', 'patch'],'/registro/{user}','UsuarioController@update')->name('actualizar_usuario');
+Route::delete('/registro/{user}','UsuarioController@destroy')->name('borrar_usuario');
 Route::resource('usuarios','UsuarioController');
-Route::get('/historial','HistorialController@index');
+
+Route::get('/administracion/roles', 'RolController@index')->name('administrar_roles');
+Route::get('/registro/crearRol','RolController@create');
+Route::post('/registroRol', 'RolController@store');
+Route::get('/registro/{rol}','RolController@show');
+Route::get('registro/{rol}/editar_rol', 'RolController@edit')->name('editar_rol');
+Route::match(['put', 'patch'],'/registro/{rol}','RolController@update')->name('actualizar_rol');
+Route::delete('/registro/borrar_rol/{rol}','RolController@destroy')->name('borrar_rol');
+Route::resource('roles','RolController');
+
+Route::get('/proyectos/inicio', 'ProyectoController@index')->name('inicio_proyectos');
+Route::get('/registro/crearRol','RolController@create');
+Route::post('/registroRol', 'RolController@store');
+Route::get('/registro/{rol}','RolController@show');
+Route::get('registro/{rol}/editar_rol', 'RolController@edit')->name('editar_rol');
+Route::match(['put', 'patch'],'/registro/{rol}','RolController@update')->name('actualizar_rol');
+Route::delete('/registro/borrar_rol/{rol}','RolController@destroy')->name('borrar_rol');
+Route::resource('roles','RolController');
+
+
 
 Route::get('/home', 'HomeController@index')->name('home');
 
@@ -49,103 +65,3 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 
 
-/*Route::get('/proyectos-activos','ProyectoController@index');
-
-Route::resource('historial_proyecto','HistorialController');
-
-Route::get('/plantilla', function () {
-    return view('/plantilla');
-});
-
-Route::get('/proyectos', function () {
-    return "Aqui ira la pestaña proyectos";
-});
-
-Route::get('/tareas', function () {
-    return view('/tareas');
-});
-
-Route::get('/tarea-concreto', function () {
-    return view('/tarea-concreto');
-});
-
-Route::get('/entrada', function () {
-    return view('/entrada');
-});
-
-Route::get('/compañeros', function () {
-    return view('/compañeros');
-});
-
-Route::get('/proy-info', function () {
-    return view('/proy-info');
-});
-
-Route::get('/proyectos-activos', function () {
-    return view('/proyectos-activos');
-});
-
-Route::get('/crear-proyecto', function () {
-    return view('/crear-proyecto');
-});
-
-
-
-Route::get('/crear-permiso', function () {
-    return view('/crear-permiso');
-});
-
-Route::get('/crear-rol', function () {
-    return view('/crear-rol');
-});
-
-Route::get('/usuarios', function () {
-    return "Aqui ira la pestaña usuarios";
-});
-
-Route::get('/usuarios/gestion_de_usuarios', function () {
-    return "Aqui ira la pagina con formularios (añadir, actualizar, leer, etc)";
-});
-
-Route::get('/estadisticas', function () {
-    return "Aqui ira la pestaña estadisticas en tiempo";
-});
-
-Route::get('/notas', function () {
-    return view('/notas');
-});
-
-Route::get('/crear-nota', function () {
-    return view('/crear-nota');
-});
-
-Route::get('/mis_notas/gestion_de_notas', function () {
-    return "Aqui ira la pagina con formularios (añadir, actualizar, leer, etc)";
-});
-
-Route::get('/perfil', function () {
-    return view('/perfil');
-});
-
-Route::get('/perfil/gestion_de_perfil', function () {
-    return "Aqui ira la pagina con formularios (añadir, actualizar, leer, etc)";
-});
-
-Route::get('/historial', function () {
-    return view('/historial');
-});
-
-Route::get('/historial-proyecto', function () {
-    return view('/historial-proyecto');
-});
-
-Route::get('/historial-tarea', function () {
-    return view('/historial-tarea');
-});
-
-Route::get('/busqueda', function () {
-    return "Aqui ira la pagina de busqueda por campo nombre de proyecto";
-});
-Route::get('/busqueda/avanzada', function () {
-    return "Aqui ira la pagina con el formulario de busqueda por campos";
-});*/

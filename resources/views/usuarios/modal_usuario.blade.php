@@ -1,11 +1,4 @@
-<script>
-$(window).load(function(){
-    $('#myModal').modal('show');
-});
-$(function () {
- $('#modal').modal('toggle');
-});
-</script>
+
 <button class="btn btn-outline-success" onclick="document.getElementById('gestionUsuarios').style.display='block'" style="width:auto;"><i class="fa fa-sign-in" aria-hidden="true"></i>
 Gestionar Usuarios
 </button>
@@ -20,12 +13,12 @@ Gestionar Usuarios
                 </div>
                 <div class="modal-body" style="padding:40px 50px;max-height:500px;" >
                     <div class="card-deck mb-3 text-center justify-content-center" style="max-width:900px">
-                        <div class="d-inline card mb-4 shadow-sm"  id="proyecto-historial">
+                        <div class="d-inline card mb-4 shadow-sm"  id="carta modal">
                             <div class="card-header" style="width: auto;">
                             <h4 class="my-0 font-weight-normal">Listado Usuarios</h4>
                             </div>
                             <div class="card-body">
-                                <table border="1">
+                                <table border="1" class="text-center">
                                     <tr>
                                         <th>ID</th>
                                         <th>Nombre</th>
@@ -34,15 +27,19 @@ Gestionar Usuarios
                                         <th>Rol</th>
                                         <th colspan="2">Accion</th>
                                     </tr>
-                                    @foreach ($listaUsuarios as $usuario)
+                                    @foreach ($users as $usuario)
                                         <tr> 
                                          <td>{{ $usuario->id }}</td>
                                          <td>{{ $usuario->nombre }}</td>
                                          <td>{{ $usuario->apodo }}</td>
                                          <td>{{ $usuario->email }}</td>
                                          <td>{{ $usuario->roles()->value('nombre_rol') }}</td>
-                                         <td><a href="">Editar</a></td>
-                                         <td><a href="">Eliminar</a></td>
+                                         <td><a class="btn btn-info btn-sm"  href="{{ route ('editar_usuario',$usuario->id) }}">Editar Usuario</a></td>
+                                         <td><form action="{{ route('borrar_usuario', $usuario->id)}}" method="post" style="display: inline-block">
+                                            @csrf
+                                            @method('DELETE')
+                                            <a class="btn btn-danger btn-sm" style="color: white;" type="submit">Borrar Usuario</a>
+                                          </form></td>
                                         </tr> 
                                     @endforeach
                                 </table>    
@@ -58,3 +55,4 @@ Gestionar Usuarios
         </div>						
     </div>
 </div>
+

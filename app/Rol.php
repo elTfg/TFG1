@@ -8,6 +8,9 @@ class Rol extends Model
 {
     
     protected $table = 'rol';
+    protected $fillable = [
+        'nombre_rol', 'slug', 'descripcion_rol',
+    ];
 
     public function permisos()
     {

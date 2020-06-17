@@ -36,9 +36,19 @@
       <input type="password" width="100%" class="form-control" id="password_confirmation" name="password_confirmation" required autocomplete="new-password"/>
     </div>
     <br>
+    <div class="text-left" style="width: 100%;">
+      <label for="rol" style="text-align: left;">Asignar Rol: </label>
+      <select name="rol_id">
+        <option value="" selected="selected">Elige un rol</option>
+        @foreach ($roles as $id => $rol)
+          <option value="{!! $id !!}">{{ $rol->nombre_rol }} </option>
+        @endforeach
+      </select>
+    </div>
+    <br>
     <div class="text-center" style="width: 100%;">
       <button type="submit" class="btn btn-primary">
-       {{ __('Register') }}
+       {{ __('Nuevo Usuario') }}
       </button>
     </div>
   </form>

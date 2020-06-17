@@ -20,7 +20,7 @@
     }
     
     #proyecto-historial {
-        max-width: 400px;
+        max-width: 1000px;
         overflow: auto;
         
     }
@@ -60,23 +60,19 @@
         <div class="card-body text-left">
             <div class="text-center">
               @if (Auth::user()->tieneRol('administrador'))
-              @include('create_usuarios')
-                @yield('formulario')
-              @include('modal_layout')
-                
+                @include('usuarios.create_usuarios')
+                 @yield('formulario')
+                @include('usuarios.modal_usuario')                
               @else
               <div class="card-body">
                 <h3>Listado de usuarios</h3>
                 <ul class="text-left">
-                @foreach ($listaUsuarios as $usuario)
+                @foreach ($users as $usuario)
                   <li>{{ $usuario->nombre }} </li>
                 @endforeach
                 </ul>
-              </div>
-
-              
-              @endif
-             
+              </div>              
+              @endif             
             </div>
         </div>
       </div> 
@@ -84,33 +80,26 @@
         <div class="card-header">
           <h4 class="my-0 font-weight-normal">Crear roles</h4>
         </div>
-        <div class="card-body">
-          <p class="notas">Nombre del rol:</p>
-               <input type="text" id="nombre" name="nombre"><br/>
-               <br/>
-               <button type="button" class="btn btn-success">Aceptar</button>
-               <button type="button" class="btn btn-danger">Cancelar</button>
-        </div>
-        <div class="card-body">
-          <p class="notas">Asignar roles a usuarios:</p><br/>
-          <p class="notas">Rol:</p>
-          <select name="usuarios">
-            @foreach ($listaRoles as $rol)
-              <option>{{ $rol->nombre_rol }} </option>
-            @endforeach
-          </select>
-          <br/><br/>
-          <p class="notas">Usuario:</p>
-          <select name="usuarios">
-            @foreach ($listaUsuarios as $usuario)
-            <option>{{ $usuario->nombre }} </option>
-          @endforeach
-          </select>
-          <br/><br/>
-          <button type="button" class="btn btn-success">Aceptar</button>
-          <button type="button" class="btn btn-danger">Cancelar</button>
+        <div class="card-body text-left">
+          <div class="text-center">
+            @if (Auth::user()->tieneRol('administrador') || Auth::user()->tieneRol('supervisor')) 
+              @include('roles.crear_rol')
+               @yield('formulario_roles')
+               @include('roles.modal_rol')
+            @else
+            <div class="card-body">
+              <h3>Listado de roles</h3>
+              <ul class="text-left">
+              @foreach ($roles as $rol)
+                <li>{{ $rol->nombre_rol }} </li>
+              @endforeach
+              </ul>
+            </div>              
+            @endif             
+          </div>
         </div>
       </div>
+     </div>
 
       <div class="d-inline card mb-4 shadow-sm" id="proyecto-historial">
         <div class="card-header">
@@ -127,15 +116,15 @@
           <p class="notas">Asignar permisos a roles:</p><br/>
           <p class="notas">Permisos:</p>
           <select name="usuarios">
-            @foreach ($listaPermisos as $permisos)
-            <option>{{ $permisos->nombre_permiso }} </option>
+            @foreach ($permisos as $permiso)
+            <option>{{ $permiso->nombre_permiso }} </option>
           @endforeach
           </select>
           <br/><br/>
           <p class="notas">Roles:</p>
           <select name="usuarios">
-            @foreach ($listaRoles as $roles)
-            <option>{{ $roles->nombre_rol }} </option>
+            @foreach ($roles as $rol)
+            <option>{{ $rol->nombre_rol }} </option>
           @endforeach
           </select>
           <br/><br/>

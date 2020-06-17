@@ -4,7 +4,7 @@ namespace App\Providers;
 
 use App\Permiso;
 use Illuminate\Support\Facades\Blade;
-use Illuminate\Auth\Access\Gate;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
 
 class PermisosServiceProvider extends ServiceProvider

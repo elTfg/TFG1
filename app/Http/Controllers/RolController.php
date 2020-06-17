@@ -2,13 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use App\Proyecto;
-use App\Tarea;
+use App\Rol;
 use App\User;
+use Illuminate\Http\Request;
 
-class ProyectoController extends Controller
+class RolController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,10 +15,7 @@ class ProyectoController extends Controller
      */
     public function index()
     {
-        $users = User::with('roles')->get();
-        $proyectos = Proyecto::get();
-        $tareas = DB::table('tarea')->get();
-        return view('proyectos.inicio_proyectos', compact('users','proyectos','tareas'));
+        return view('usuarios.administracion');
     }
 
     /**
@@ -30,7 +25,7 @@ class ProyectoController extends Controller
      */
     public function create()
     {
-        return view('proyectos.crear_proyecto');
+        return view('roles.crear_rol');
     }
 
     /**
@@ -41,7 +36,15 @@ class ProyectoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate(request(), [
+            'nombre_rol' => 'required|string',
+            'slug' => 'required|string',
+            'descripcion_rol' =>'nullable|string',
+        ]);
+
+        $rol = Rol::create(request(['nombre_rol', 'slug', 'descripcion_rol']));
+
+        return redirect('administracion')->with('success','Has registrado un nuevo rol.');
     }
 
     /**
@@ -63,7 +66,8 @@ class ProyectoController extends Controller
      */
     public function edit($id)
     {
-        //
+        $rol = Rol::findOrFail($id);
+        return view('roles.editar_rol', compact('rol'));
     }
 
     /**
@@ -75,7 +79,17 @@ class ProyectoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $rol = Rol::findOrFail($id);
+            
+        $datos = $request->validate([
+            'nombre_rol' => 'required|string',
+            'slug' => 'required|string',
+            'descripcion_rol' =>'required|string', ]);
+    
+       $rol->update($datos);
+      
+        return redirect()->route('administracion')
+                        ->with('success','Rol modificado satisfactoriamente');
     }
 
     /**
@@ -86,6 +100,9 @@ class ProyectoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $rol = Rol::findOrFail($id);
+        $rol->delete();
+        return redirect()->route('administracion')
+                                    ->with('success', 'el rol {{$rol->id}} fue borrado.');
     }
 }
