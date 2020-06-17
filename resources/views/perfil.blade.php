@@ -47,6 +47,13 @@
       position: absolute;
       top: 50%;
     }
+
+    #atras{
+      position: absolute;
+      top:10%;
+      left:15%;
+      text-decoration:none;
+    }
 </style> 
 
 
@@ -93,5 +100,5 @@
       </div>    
     </div>
   </div>
-  
+  <a href="compañeros" id="atras"><button type="button" class="btn btn-lg btn-block btn-primary">Atras</button></a>
 @endsection

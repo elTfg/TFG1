@@ -58,4 +58,5 @@
             <p>{{$proyecto->descripcion_larga}}</p>
         </div>
     </div>
+    <a href="../proyectos/inicio" id="atras"><button type="button" class="btn btn-lg btn-block btn-primary">Atras</button></a>
 @endsection

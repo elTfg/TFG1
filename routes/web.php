@@ -54,8 +54,3 @@ Route::resource('proyectos','ProyectoController');
 Route::get('/home', 'HomeController@index')->name('home');
 
 
-
-
-
-
-
