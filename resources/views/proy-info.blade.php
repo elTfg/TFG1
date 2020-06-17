@@ -45,7 +45,7 @@
         <li>Fecha inicio prevista:</li>
         <li>Fecha final prevista:</li>
         <li>Estado:</li>
-        <li>Creada por:</li>
+        <li>Creada el:</li>
         <li>Descripción:</li>
         <li>Estado:</li>
         <li>Usuario:</li>
