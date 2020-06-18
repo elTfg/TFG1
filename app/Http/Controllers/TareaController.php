@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Proyecto;
 use App\Tarea;
+use Illuminate\Support\Facades\Log;
 
 use Illuminate\Http\Request;
 
@@ -64,15 +65,14 @@ class TareaController extends Controller
     public function show($id)
     {
         $tarea=Tarea::find($id);
-        $proyecto=$tarea->proyecto_id;
         $estados = [
             1 =>'no_iniciada', 
             2 =>'iniciada', 
             3 =>'pausada',
             4 => 'finalizada'];
 
-        //return view('proyectos.tareas.info_tarea', ['proyecto'=>$proyecto,'tarea'=>$tarea, 'estados'=>$estados]);
-        return view('proyectos.tareas.info_tarea')->with(compact('tarea', 'proyecto', 'estados'));
+        //return view('proyectos.tareas.info_tarea', ['tarea'=>$tarea, 'estados'=>$estados]);
+        return view('proyectos.tareas.info_tarea', compact('tarea','estados'));
     }
 
     /**
@@ -124,6 +124,6 @@ class TareaController extends Controller
         $proyecto_id=$tarea->proyecto_id;
         $tarea->delete();
         return redirect()->route('inicio_tareas', $proyecto_id)
-                                    ->with('success', 'el usuario {{$id}} fue borrado.');
+                                    ->with('success', 'la tarea {{$id}} fue borrado.');
     }
 }

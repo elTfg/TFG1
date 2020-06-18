@@ -50,9 +50,6 @@
 
 @section('unnombre')
 <div class="container" id="proyectos-historial">
-  <div id="boton-top">
-    <a href="crear-proyecto" id="crear-proyecto"><button type="button" class="btn btn-lg btn-block btn-primary">Crear proyecto</button></a>
-  </div>
   <div class="card-deck mb-3 text-center">
     @foreach ($proyectos as $proyecto)
     <div class="d-inline card mb-4 shadow-sm" id="proyecto-historial">
@@ -68,6 +65,11 @@
         </div>
     </div>
     @endforeach  
+  </div>
+  <div id="boton-top">
+    <!--<a href="crear-proyecto" id="crear-proyecto"><button type="button" class="btn btn-lg btn-block btn-primary">Crear proyecto</button></a>-->
+    @include('proyectos.crear_proyecto')
+    @yield('otronombre')
   </div>
 </div>
 

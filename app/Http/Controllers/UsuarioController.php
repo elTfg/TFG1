@@ -49,7 +49,7 @@ class UsuarioController extends Controller
         
         $rol_id = $request->input('rol_id');
         $rol_id+=1;
-        $user = User::create(request(['nombre', 'email', 'apodo', 'password']))->withtimestamps();
+        $user = User::create(request(['nombre', 'email', 'apodo', 'password']));
         $rol = Rol::find($rol_id);
         $user->roles()->attach($rol);
 

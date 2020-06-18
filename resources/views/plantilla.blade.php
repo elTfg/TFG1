@@ -97,7 +97,8 @@
           @endif
         </div>
         <div class="unnombre"> 
-          @yield('unnombre')          
+          @yield('unnombre')
+          @yield('otronombre')          
         </div>
       </div>
     </div>

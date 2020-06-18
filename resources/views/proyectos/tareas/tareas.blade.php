@@ -70,13 +70,13 @@
               <li>Tiempo asignado: {{$tarea->n_horas_asignadas}} hrs</li>
               <li>Estado: {{$tarea->estado}}</li>
             </ul>
-            <a href="{{route('info_tarea', [$tarea->proyecto_id,$tarea->id])}}" id="boton-tarea"><button type="button" class="btn btn-lg btn-block btn-primary">Ver tarea</button></a>
+            <a href="{{route('info_tarea', [$tarea->id,$tarea->proyecto_id])}}" id="boton-tarea"><button type="button" class="btn btn-lg btn-block btn-primary">Ver tarea</button></a>
           </div>
       </div>
       @endforeach        
   </div>
 
-  <a href="../proyectos/inicio" id="atras"><button type="button" class="btn btn-lg btn-block btn-primary">Atras</button></a>
+  <a href="{{route('info_proyecto', $tarea->proyecto_id)}}" id="atras"><button type="button" class="btn btn-lg btn-block btn-primary">Atras</button></a>
   @include('proyectos.tareas.crear_tarea')
   </div>
   

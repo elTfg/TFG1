@@ -43,7 +43,7 @@ Route::resource('roles','RolController');
 Route::get('/proyectos/inicio', 'ProyectoController@index')->name('inicio_proyectos');
 Route::get('/proyecto/crearProyecto','ProyectoController@create');
 Route::get('/proyecto/{proyecto}','ProyectoController@show')->name('info_proyecto');
-Route::post('/proyecto_guardar', 'ProyectoController@store');
+Route::post('/guardar_proyecto', 'ProyectoController@store');
 Route::get('/proyecto/{proyecto}/editar_proyecto', 'ProyectoController@edit')->name('editar_proyecto');
 Route::match(['put', 'patch'],'/registro/{proyecto}','ProyectoController@update')->name('actualizar_proyecto');
 Route::delete('/proyecto/borrar_proyecto/{proyecto}','ProyectoController@destroy')->name('borrar_proyecto');
