@@ -8,7 +8,7 @@ class Tarea extends Model
 {
     protected $table = 'tarea';
     protected $fillable = [
-        'nombre_tarea','descripcion_tarea','fecha_inicio_prevista','fecha_fin_prevista'
+        'nombre_tarea','descripcion_tarea','n_horas_asignadas','estado'
    ];
 
     public function proyectos()

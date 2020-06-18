@@ -53,7 +53,7 @@ class ProyectoController extends Controller
     public function show($id)
     {
         $proyecto = Proyecto::find($id);
-        $tareas_proyecto=Proyecto::find($id)->tareas;
+        $tareas_proyecto=Proyecto::find($id)->tareas->take(3);
 
         return view('proyectos.info_proyecto', ['proyecto'=> $proyecto, 'tareas'=>$tareas_proyecto]);
     }

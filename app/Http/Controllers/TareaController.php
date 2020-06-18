@@ -1,8 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Proyecto;
+use App\Tarea;
 
 use Illuminate\Http\Request;
+
+use function GuzzleHttp\Promise\all;
 
 class TareaController extends Controller
 {
@@ -11,9 +15,10 @@ class TareaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
-        //
+        $tareas=Proyecto::find($id)->tareas;
+        return view('proyectos.tareas.tareas', ['tareas'=>$tareas]);
     }
 
     /**
@@ -21,9 +26,10 @@ class TareaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
-        //
+        $proyecto=Proyecto::find($id);
+        return view('proyectos.tareas.crear_tarea', ['proyecto'=>$proyecto]);
     }
 
     /**
@@ -34,7 +40,19 @@ class TareaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate(request(), [
+            'titulo_tarea' => 'required|string',
+            'descripcion_tarea' => 'required|string',
+        ]);
+        
+        $proyecto = Proyecto::find(request('proyecto_id'));
+        $tarea = $proyecto->tareas()->create([
+            'nombre_tarea' => request('titulo_tarea'),
+            'descripcion_tarea' => request('descripcion_tarea'),
+            'n_horas_asignadas' => request('n_horas_asignadas')
+        ]);
+
+        return redirect(route('inicio_tareas', $proyecto->id))->with('success','Has creado una nueva tarea.');
     }
 
     /**
@@ -45,7 +63,16 @@ class TareaController extends Controller
      */
     public function show($id)
     {
-        //
+        $tarea=Tarea::find($id);
+        $proyecto=$tarea->proyecto_id;
+        $estados = [
+            1 =>'no_iniciada', 
+            2 =>'iniciada', 
+            3 =>'pausada',
+            4 => 'finalizada'];
+
+        //return view('proyectos.tareas.info_tarea', ['proyecto'=>$proyecto,'tarea'=>$tarea, 'estados'=>$estados]);
+        return view('proyectos.tareas.info_tarea')->with(compact('tarea', 'proyecto', 'estados'));
     }
 
     /**
@@ -56,7 +83,8 @@ class TareaController extends Controller
      */
     public function edit($id)
     {
-        //
+        $tarea = Tarea::findOrFail($id);
+        return view('proyectos.tareas.editar_tarea')->with(compact('tareas'));
     }
 
     /**
@@ -68,7 +96,20 @@ class TareaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $tarea = Tarea::findOrFail($id);
+                    
+        $datos = $request->validate([
+            'nombre_tarea' => 'string',
+            'descripcion_tarea' => 'string',
+            'n_horas_asignadas' => 'integer',
+            'estado' => 'string'
+             ]);
+
+       $tarea->update($datos);
+
+  
+        return redirect()->route('inicio_tareas', $tarea->proyecto_id)
+                                    ->with('success', 'Se actualizo la tarea.');
     }
 
     /**
@@ -78,7 +119,11 @@ class TareaController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {
-        //
+    {        
+        $tarea = Tarea::findOrFail($id);
+        $proyecto_id=$tarea->proyecto_id;
+        $tarea->delete();
+        return redirect()->route('inicio_tareas', $proyecto_id)
+                                    ->with('success', 'el usuario {{$id}} fue borrado.');
     }
 }

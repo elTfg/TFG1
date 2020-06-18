@@ -52,11 +52,31 @@
   </div>
   
   <div class="container">
-    <div class="card-deck mb-3 text-center">
+    <div class="card-deck mb-3 text-left">
         <div>
             <h2>Descripcion del proyecto:</h2>
             <p>{{$proyecto->descripcion_larga}}</p>
         </div>
     </div>
-    <a href="../proyectos/inicio" id="atras"><button type="button" class="btn btn-lg btn-block btn-primary">Atras</button></a>
+    <div class="card-deck mb-3 text-center">
+        @foreach ($tareas as $tarea)
+        <div class="d-inline card mb-4 shadow-sm" id="carta {{$tarea->id}}">
+            <div class="card-header">
+              <h4 class="my-0 font-weight-normal">Tarea {{$tarea->id}}:</h4>
+            </div>
+            <div class="card-body">
+              <ul class="list-unstyled mt-3 mb-4">
+                <li>Nombre: {{$tarea->nombre_tarea}}</li>
+                <li>Fecha Inicio:{{$tarea->creada_el}}</li>
+                <li>Tiempo asignado: {{$tarea->n_horas_asignadas}} hrs</li>
+                <li>Estado: {{$tarea->estado}}</li>
+              </ul>
+              <a href="{{route('info_tarea',[$proyecto->id, $tarea->id])}}" id="boton-tarea"><button type="button" class="btn btn-lg btn-block btn-primary">Ver tarea</button></a>
+            </div>
+        </div>
+        @endforeach        
+    </div>
+
+    <a href="{{route ('inicio_proyectos')}}" id="atras"><button type="button" class="btn btn-lg btn-block btn-primary">Atras</button></a>
+    <a href="{{route('inicio_tareas', $proyecto->id)}}" id="todas_tareas"><button type="button" class="btn btn-lg btn-block btn-info">Ver todas las tareas</button></a>
 @endsection

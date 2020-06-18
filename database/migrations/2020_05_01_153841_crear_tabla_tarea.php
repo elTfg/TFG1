@@ -20,8 +20,8 @@ class CrearTablaTarea extends Migration
             $table->timestamps();
             $table->unsignedSmallInteger('n_horas_asignadas');
             $table->enum('estado', ['no_iniciada', 'iniciada', 'pausada', 'finalizada'])->default('no_iniciada');
-            $table->timestamp('creada_el');
-            $table->timestamp('finalizada_el');
+            $table->timestamp('empezada_el')->nullable();
+            $table->timestamp('finalizada_el')->nullable();
             $table->foreignId('proyecto_id');
 
 

@@ -49,8 +49,20 @@ Route::match(['put', 'patch'],'/registro/{proyecto}','ProyectoController@update'
 Route::delete('/proyecto/borrar_proyecto/{proyecto}','ProyectoController@destroy')->name('borrar_proyecto');
 Route::resource('proyectos','ProyectoController');
 
+Route::get('/proyectos/{proyecto}/tareas', 'TareaController@index')->name('inicio_tareas');
+Route::get('/proyecto/{proyecto}/tarea','TareaController@create')->name('crear_tarea');
+Route::get('/proyecto/{proyecto}/{tarea}','TareaController@show')->name('info_tarea');
+Route::post('/guardar_tarea', 'TareaController@store') ;
+Route::get('/tarea/{tarea}/editar_tarea', 'TareaController@edit')->name('editar_tarea');
+Route::match(['put', 'patch'],'/proyecto/{tarea}','TareaController@update')->name('actualizar_tarea');
+Route::delete('/proyecto/{tarea}','TareaController@destroy')->name('borrar_tarea');
+Route::resource('tareas','TareaController');
+
 
 
 Route::get('/home', 'HomeController@index')->name('home');
 
 
+Route::get('/pruebas', function () {
+    return view('pruebas');
+});

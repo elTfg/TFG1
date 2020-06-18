@@ -49,7 +49,7 @@ class UsuarioController extends Controller
         
         $rol_id = $request->input('rol_id');
         $rol_id+=1;
-        $user = User::create(request(['nombre', 'email', 'apodo', 'password']));
+        $user = User::create(request(['nombre', 'email', 'apodo', 'password']))->withtimestamps();
         $rol = Rol::find($rol_id);
         $user->roles()->attach($rol);
 
@@ -117,6 +117,6 @@ class UsuarioController extends Controller
         $usuario = User::findOrFail($id);
         $usuario->delete();
         return redirect()->route('administracion')
-                                    ->with('success', 'el usuario {{$usuario->id}} fue borrado.');
+                                    ->with('success', 'el usuario {{$id}} fue borrado.');
     }
 }
