@@ -52,15 +52,14 @@
   </div>
   
   <div class="container">
-    <div class="card-deck mb-3 text-left">
-        <div>
-            <h2>Descripcion del proyecto:</h2>
-            <p>{{$proyecto->descripcion_larga}}</p>
-        </div>
+    <div>
+      <h2>Descripcion del proyecto:</h2>
+      <p>{{$proyecto->descripcion_larga}}</p>
     </div>
-    <div class="card-deck mb-3 text-center">
-        @foreach ($tareas as $tarea)
-        <div class="d-inline card mb-4 shadow-sm" id="carta {{$tarea->id}}">
+      @isset($tareas)
+        <div class="card-deck mb-3 text-center">
+          @forelse ($tareas as $tarea)
+          <div class="d-inline card mb-4 shadow-sm" id="carta {{$tarea->id}}">
             <div class="card-header">
               <h4 class="my-0 font-weight-normal">Tarea {{$tarea->id}}:</h4>
             </div>
@@ -71,12 +70,17 @@
                 <li>Tiempo asignado: {{$tarea->n_horas_asignadas}} hrs</li>
                 <li>Estado: {{$tarea->estado}}</li>
               </ul>
-              <a href="{{route('info_tarea',[$proyecto->id, $tarea->id])}}" id="boton-tarea"><button type="button" class="btn btn-lg btn-block btn-primary">Ver tarea</button></a>
+                <a href="{{route('info_tarea',[$proyecto->id, $tarea->id])}}" id="boton-tarea"><button type="button" class="btn btn-lg btn-block btn-primary">Ver tarea</button></a>
             </div>
-        </div>
-        @endforeach        
-    </div>
-
+          </div>
+          @empty
+          <div>
+          <h2>Este proyecto no tiene tareas aun</h2>
+            <p>¿Quieres crear una?</p>
+            @include('proyectos.tareas.crear_tarea')
+          </div> 
+          @endforelse         
+      @endisset      
+  </div>           
     <a href="{{route ('inicio_proyectos')}}" id="atras"><button type="button" class="btn btn-lg btn-block btn-primary">Atras</button></a>
-    <a href="{{route('inicio_tareas', $proyecto->id)}}" id="todas_tareas"><button type="button" class="btn btn-lg btn-block btn-info">Ver todas las tareas</button></a>
 @endsection

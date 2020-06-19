@@ -17,8 +17,8 @@
                         <form method="POST" action="/guardar_tarea">
                           @csrf
                           <div class="card-body">
-                              <input id="proyecto_id" name="proyecto_id" type="hidden" value="{{$tarea->proyecto_id}}" />
-                              <p>proyecto_id:{{$tarea->proyecto_id}}</p>
+                              <input id="proyecto_id" name="proyecto_id" type="hidden" value="{{$proyecto->id}}" />
+                              <p>proyecto_id:{{$proyecto->id}}</p>
                               <div class="text-left" style="width: 100%;">
                                 <label for="titulo_tarea" style="text-align: left;">Titulo tarea: </label>
                                 <input type="text" width="100%" id="titulo_tarea" class="form-control  @error('titulo_tarea') is-invalid @enderror" name="titulo_tarea" value="{{ old('titulo_tarea') }}" required autocomplete="titulo_tarea" autofocus/>

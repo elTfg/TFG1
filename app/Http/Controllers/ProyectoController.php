@@ -64,7 +64,7 @@ class ProyectoController extends Controller
                 'usuario_id' => request('usuario'),
                     
             ]);
-            
+
             return redirect(route('inicio_proyectos'))->with('success','Has creado un nuevo proyecto.');
         }
     }
@@ -78,6 +78,7 @@ class ProyectoController extends Controller
     public function show($id)
     {
         $proyecto = Proyecto::find($id);
+
         $tareas_proyecto=Proyecto::find($id)->tareas->take(3);
 
         return view('proyectos.info_proyecto', ['proyecto'=> $proyecto, 'tareas'=>$tareas_proyecto]);
@@ -91,7 +92,14 @@ class ProyectoController extends Controller
      */
     public function edit($id)
     {
-        //
+        $proyecto = Proyecto::findOrFail($id);
+        $usuarios = User::all();
+        $estados = [
+            1 =>'no_iniciado', 
+            2 =>'iniciado', 
+            3 =>'pausado',
+            4 => 'finalizado'];
+        return view('proyectos.editar_proyecto')->with(compact('proyecto', 'usuarios', 'estados'));
     }
 
     /**
@@ -103,7 +111,24 @@ class ProyectoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $proyecto = Proyecto::findOrFail($id);
+                    
+        $datos = $request->validate([
+                'titulo_proyecto' => 'required|string',
+                'descripcion_proyecto' => 'nullable|string',
+                'descripcionBreve_proyecto' => 'required|string',
+                'nombre_cliente' =>'required|string',
+                'fecha_inicio'=> 'required|date',
+                'fecha_fin'=> 'required|date',
+                'estado' => 'string'
+             ]);
+
+       $proyecto->update($datos);
+
+  
+        return redirect()->route('inicio_proyectos')
+                                    ->with('success', 'Se actualizo el proyecto.');
+    
     }
 
     /**
@@ -114,6 +139,10 @@ class ProyectoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $tarea = Tarea::findOrFail($id);
+        $proyecto_id=$tarea->proyecto_id;
+        $tarea->delete();
+        return redirect()->route('inicio_tareas', $proyecto_id)
+                                    ->with('success', 'la tarea {{$id}} fue borrado.');
     }
 }

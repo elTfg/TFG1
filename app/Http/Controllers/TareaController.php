@@ -19,7 +19,8 @@ class TareaController extends Controller
     public function index($id)
     {
         $tareas=Proyecto::find($id)->tareas;
-        return view('proyectos.tareas.tareas', ['tareas'=>$tareas]);
+        $proyecto=Proyecto::find($id);
+        return view('proyectos.tareas.tareas')->with(compact('tareas','proyecto'));
     }
 
     /**
