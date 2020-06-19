@@ -41,13 +41,14 @@
     <div class="form-group pull-right">
         <a class="btn btn-danger" href="{{ route('administracion') }}">Volver a la pantalla anterior</a>
         <button type="submit" class="btn btn-success">Actualizar</button>
+      </form> 
         <form action="{{ route('borrar_usuario', $usuario->id)}}" method="post" style="display: inline-block">
             @csrf
             @method('DELETE')
             <button class="btn btn-danger btn-sm" type="submit">Delete</button>
           </form>
     </div>                   
-</form>    
+   
 
 
 

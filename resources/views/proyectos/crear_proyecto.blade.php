@@ -16,10 +16,9 @@
                       <div class="d-inline card mb-4 shadow-sm"  id="carta modal">
                         <form method="POST" action="/guardar_proyecto">
                           @csrf
-                          <div class="card-body">
                               <div class="text-left" style="width: 100%;">
                                 <label for="titulo_proyecto" style="text-align: left;">Titulo Proyecto: </label>
-                                <input type="text" width="100%" id="titulo_tarea" class="form-control  @error('titulo_proyecto') is-invalid @enderror" name="titulo_tarea" value="{{ old('titulo_proyecto') }}" required autocomplete="titulo_proyecto" autofocus/>
+                                <input type="text" width="100%" id="titulo_proyecto" class="form-control  @error('titulo_proyecto') is-invalid @enderror" name="titulo_proyecto" value="{{ old('titulo_proyecto') }}" required autocomplete="titulo_proyecto" autofocus/>
                                 @error('titulo_proyecto')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -73,7 +72,7 @@
                               </div>
                               <div class="text-left" style="width: 25%;">
                                 <label for="estado" style="text-align: left;">Asignar a un usuario:</label>
-                                <select class='form-control select2' value"" name='usuarios'>
+                                <select class='form-control select2' value"" name='usuario'>
                                     @foreach ($users as $usuario)
                                     <option value="{{$usuario->id}}">{{$usuario->nombre}}</option>
                                     @endforeach

@@ -41,7 +41,32 @@ class ProyectoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        {
+            $this->validate(request(), [
+                'titulo_proyecto' => 'required|string',
+                'descripcion_proyecto' => 'nullable|string',
+                'descripcionBreve_proyecto' => 'required|string',
+                'nombre_cliente' =>'required|string',
+                'fecha_inicio'=> 'required|date',
+                'fecha_fin'=> 'required|date',
+                'estado' => 'string',
+            ]);
+            
+            $usuario = User::find(request('usuario'));
+            $proyecto = $usuario->proyectos()->create([
+                'titulo_proyecto' => request('titulo_proyecto'),
+                'descripcion_larga' => request('descripcion_proyecto'),
+                'descripcion_corta' => request('descripcionBreve_proyecto'),
+                'nombre_cliente' => request('nombre_cliente'),
+                'fecha_inicio_prevista'=> request('fecha_inicio'),
+                'fecha_fin_prevista'=> request('fecha_fin'),
+                'estado' => request('estado'),
+                'usuario_id' => request('usuario'),
+                    
+            ]);
+            
+            return redirect(route('inicio_proyectos'))->with('success','Has creado un nuevo proyecto.');
+        }
     }
 
     /**

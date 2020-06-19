@@ -36,7 +36,7 @@ Route::get('/registro/crearRol','RolController@create');
 Route::post('/registroRol', 'RolController@store');
 Route::get('/registro/{rol}','RolController@show');
 Route::get('registro/{rol}/editar_rol', 'RolController@edit')->name('editar_rol');
-Route::match(['put', 'patch'],'/registro/{rol}','RolController@update')->name('actualizar_rol');
+Route::match(['put', 'patch'],'/registro/{rol}/actualizar','RolController@update')->name('actualizar_rol');
 Route::delete('/registro/borrar_rol/{rol}','RolController@destroy')->name('borrar_rol');
 Route::resource('roles','RolController');
 

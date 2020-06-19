@@ -61,6 +61,7 @@
             <li>{{$proyecto->descripcion_corta}}</li>
             </ul>
             <a href="{{ route('info_proyecto', $proyecto->id) }}" id="boton-proyecto"><button type="button" class="btn btn-lg btn-block btn-primary">Ver proyecto</button></a><br/>
+            <a href="{{ route('editar_proyecto', $proyecto->id) }}" id="boton-proyecto"><button type="button" class="btn btn-lg btn-block btn-info">Editar proyecto</button></a><br/>
             <a id="boton-proyecto"><button type="button" class="btn btn-lg btn-block btn-danger">Eliminar proyecto</button></a>
         </div>
     </div>
