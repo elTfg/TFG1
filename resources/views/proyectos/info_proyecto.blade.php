@@ -79,8 +79,11 @@
             <p>¿Quieres crear una?</p>
             @include('proyectos.tareas.crear_tarea')
           </div> 
-          @endforelse         
+          @endforelse                  
       @endisset      
-  </div>           
+  </div>
+    @if (!$tareas->isEmpty())
+      <a href="{{route('inicio_tareas', $proyecto->id)}}" id="todas_tareas"><button type="button" class="btn btn-lg btn-block btn-info">Ver todas las tareas</button></a>
+    @endif       
     <a href="{{route ('inicio_proyectos')}}" id="atras"><button type="button" class="btn btn-lg btn-block btn-primary">Atras</button></a>
 @endsection

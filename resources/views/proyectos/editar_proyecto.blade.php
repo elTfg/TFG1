@@ -92,7 +92,12 @@
               <button type="submit" class="btn btn-primary">
                {{ __('Guardar proyecto') }}
               </button>
-            </div>                             
+            </div>
+            <form action="{{ route('borrar_proyecto', $proyecto->id)}}" method="post" style="display: inline-block">
+              @csrf
+              @method('DELETE')
+              <button class="btn btn-danger btn-sm" type="submit">Borrar</button>
+            </form>                             
         </div>
       </form>
     </div>
